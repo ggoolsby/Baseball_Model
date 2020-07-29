@@ -1,4 +1,3 @@
-import xlwt;
 from requests import get
 from requests.exceptions import RequestException
 from contextlib import closing
@@ -8,7 +7,11 @@ from xlwt import Workbook
 wb = Workbook()
 
 def createWB():
-
+    """
+    implements the simple_get method to pull down HTML from baseball reference 
+    creates excel workbook to write data
+    """
+    
     years = ["2000", "2001", "2002", "2003", "2004", "2005", "2006", "2007", "2008", "2009", "2010", "2011", "2012", "2013", "2014", "2015", "2016", "2017", "2018", "2019"]
 
     for year in years:
