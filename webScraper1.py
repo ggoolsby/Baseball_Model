@@ -1,4 +1,4 @@
-import xlwt
+import xlwt;
 from requests import get
 from requests.exceptions import RequestException
 from contextlib import closing
@@ -21,7 +21,9 @@ def createWB():
 
         rawHTML = simple_get("https://www.baseball-reference.com/leagues/MLB/"+year+"-schedule.shtml")
 
-        return len(rawHTML)
+        print(len(rawHTML))
+    
+        wb.save('game_data.xls')
 
 
 def simple_get(url):
@@ -59,3 +61,5 @@ def log_error(e):
     make it do anything.
     """
     print(e)
+    
+createWB()
