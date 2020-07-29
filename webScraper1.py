@@ -1,4 +1,4 @@
-import xlwt
+import xlwt;
 from requests import get
 from requests.exceptions import RequestException
 from contextlib import closing
@@ -7,18 +7,23 @@ from xlwt import Workbook
 
 wb = Workbook()
 
-def createWB(url):
+def createWB():
 
     years = ["2000", "2001", "2002", "2003", "2004", "2005", "2006", "2007", "2008", "2009", "2010", "2011", "2012", "2013", "2014", "2015", "2016", "2017", "2018", "2019"]
 
     for year in years:
         sheet = wb.add_sheet(year)
+        sheet.write(0,0, "Game Date")
+        sheet.write(0,1, "Away Team")
+        sheet.write(0,2, "Away Team Score")
+        sheet.write(0,3, "Home Team")
+        sheet.write(0,4, "Home Team Score")
 
         rawHTML = simple_get("https://www.baseball-reference.com/leagues/MLB/"+year+"-schedule.shtml")
 
         print(len(rawHTML))
-
-        wb.save("game_data.xls")
+    
+        wb.save('game_data.xls')
 
 
 def simple_get(url):
@@ -56,3 +61,5 @@ def log_error(e):
     make it do anything.
     """
     print(e)
+    
+createWB()
